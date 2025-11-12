@@ -5,18 +5,23 @@ fn main() {
     println!("Welcome to guessing game, I have a number on my mind now between 1 and 100, \
     please it, and I will tell you if it is too high or too low or maybe you it is my number.");
     let secret_number = rand::thread_rng().gen_range(1..=100);
-    let mut input = String::new();
-    io::stdin().read_line(&mut input).expect("Failed to read line");
-    println!("{} - this is your guess", input);
+    loop {
+        println!("Please input your guess.");
+        let mut input = String::new();
+        io::stdin().read_line(&mut input).expect("Failed to read line");
+        println!("{} - this is your guess", input);
 
-    let guess: u32 = input.trim().parse().expect("Please type a number!");
-    println!("{} your number", guess);
-    println!("{} secret number", secret_number);
-    if guess == secret_number {
-        println!("You win!");
-    } else if guess < secret_number {
-        println!("Too low!");
-    } else {
-        println!("Too high!");
+        let guess: u32 = input.trim().parse().expect("Please type a number!");
+        println!("{} your number", guess);
+        if guess == secret_number {
+            println!("You win!");
+            break;
+        } else if guess < secret_number {
+            println!("Too low!");
+        } else {
+            println!("Too high!");
+        }
     }
+
+
 }
