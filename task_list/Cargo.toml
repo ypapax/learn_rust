@@ -1,0 +1,10 @@
+[package]
+name = "task_list"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+
+[[bin]]
+name = "task_list"
+path = "main.rs"
